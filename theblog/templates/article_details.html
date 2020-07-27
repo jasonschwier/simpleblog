@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}{{ post.title_tag }}{% endblock %}
 
 {% block content %}
@@ -12,7 +13,7 @@
 	{% if user.id == post.author.id %}
  	- <a href="{% url 'update_post' post.pk %}" class='badge badge-info'>Edit</a>  <a href="{% url 'delete_post' post.pk %}" class='badge badge-danger'>Delete</a> 
 	
-	{% endif %}
+{% endif %}
 {% endif %} 
 
 
@@ -45,6 +46,60 @@
 	 - {{ total_likes }} Likes
 
 	</form>
+
+	<br/><br/>
+
+<div class="card mb-3">
+  <div class="row no-gutters">
+    <div class="col-md-2">
+
+    {% if post.author.profile.profile_pic %}  
+      <img src="{{ post.author.profile.profile_pic.url }}" class="card-img">
+
+
+    {% else %}  
+
+        <img src="{% static 'theblog/images/default.jpg' %}">
+    {% endif %}
+    </div>
+    <div class="col-md-10">
+      <div class="card-body">
+        <h5 class="card-title">{{ post.author.first_name }} {{ post.author.last_name }}</h5>
+
+        <p class="small text-muted">
+
+            <a href="{% url 'show_profile_page'  post.author.profile.id %}"> Profile Page</a>
+
+        	{% if post.author.profile.website_url %}
+        	   <a href="{{ post.author.profile.website_url }}"> | Website | </a>
+        	{% endif %}
+        	{% if post.author.profile.facebook_url %}
+        	   <a href="{{ post.author.profile.facebook_url }}">Facebook | </a>
+        	{% endif %}
+        
+        	{% if post.author.profile.twitter_url %}
+        	   <a href="{{ post.author.profile.twitter_url }}">Twitter | </a>
+        	{% endif %}
+        
+        	{% if post.author.profile.instagram_url %}
+        	   <a href="{{ post.author.profile.instagram_url }}">Instagram | </a>
+        	{% endif %}
+        	{% if post.author.profile.pinteres_url %}
+        	   <a href="{{ post.author.profile.pinteres_url }}">Pinterest </a>
+        	{% endif %}
+        <p class="card-text">
+        	
+        	{{ post.author.profile.bio }}
+        </p>
+      
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
 
 
 
