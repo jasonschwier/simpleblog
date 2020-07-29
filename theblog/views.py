@@ -113,4 +113,3 @@ class AddCategoryView(CreateView):
 		context = super(AddCategoryView, self).get_context_data(*args, **kwargs)
 		context["cat_menu"] = cat_menu
 		return context
-

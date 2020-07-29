@@ -2,6 +2,8 @@
 {% block title %}Delete Blog Post{% endblock %}
 {% block content %}
 
+<div class="home">
+
 
 {% if user.is_authenticated %}
 	{% if user.id == post.author.id %}
@@ -24,6 +26,8 @@
 {% else %}
 ACCESS DENIED
 {% endif %}
+
+</div>
 
 
 {% endblock %}

@@ -1,4 +1,3 @@
-
 from django.urls import path
 from .views import UserRegisterView, UserEditView, PasswordsChangeView, ShowProfilePageView, EditProfilePageView
 from django.contrib.auth import views as auth_views

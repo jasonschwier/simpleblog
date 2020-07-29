@@ -2,14 +2,14 @@
 {% block title %}Create a New Blog Category{% endblock %}
 {% block content %}
 
-
+<div class="home">
 {% if user.is_authenticated %}
-	<h1> Add Category </h1>
+	<h3> ADD A CATEGORY </h3></br>
 	<div class="form-group">
 		<form method= "POST">
 			{% csrf_token %}
 			{{ form.as_p }}
-			<button class="btn btn-secondary">Add Category</button>
+			<button class="btn btn-secondary">Add </button>
 	</div>
 		<br/>
 		<br/>
@@ -17,6 +17,8 @@
 {% else %}
 ACCESS DENIED
 {% endif %}
+
+</div>
 
 
 

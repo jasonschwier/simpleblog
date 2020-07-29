@@ -2,6 +2,8 @@
 {% block title %}Create Blog Post{% endblock %}
 {% block content %}
 
+<div class="home">
+
 
 {% if user.is_authenticated %}
 	<h1> Add Post </h1>
@@ -25,6 +27,8 @@
 {% else %}
 ACCESS DENIED
 {% endif %}
+
+</div>
 
 
 
