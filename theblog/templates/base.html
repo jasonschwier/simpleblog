@@ -13,90 +13,29 @@
 
     <link rel="stylesheet" href= "{% static 'theblog/css/main.css' %}"/>
 
-    <title>{% block title %}Unicorn Methods{% endblock %}</title>
+    <title>{% block title %}Title{% endblock %}</title>
   </head>
   <body>
 
-    <!---
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="{% url 'home' %}">Unicorn Methods</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      {% if cat_menu %}
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Categories
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-      {% for item in cat_menu %}
-          <a class="dropdown-item" href="{% url 'category' item|slugify %}"> 
-           {{ item }}</a>
   
-      {% endfor %}
+  
 
-          </div>
-      </li>
-      {% endif %}
 
-      {% if user.is_authenticated %}
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'add_post' %}">Add Post</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'add_category' %}">Add Category</a>
-        </li>
-
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Profile
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-            <a class="dropdown-item" href="{% url 'edit_profile'  %}">Edit Settings</a>
-
-            <a class="dropdown-item" href="{% url 'edit_profile_page' user.profile.id %}">Edit Profile Page</a>
-     
-            <a class="dropdown-item" href="{% url 'show_profile_page' user.profile.id %}">Show Profile Page</a>
-          </div>
-       </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-        </li>
-
-        {% else %}
-
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'register' %}">Register</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'login' %}">Login</a>
-      </li>
-      {% endif %}
-    </ul>
-  </div>
-</nav>
-    </br>
-    --->
+  
 
 <div class="vertical"> 
 
   <ul>
    
-    <li><a href="{% url 'home' %}">UNICORN METHODS</a></li>
+    <li><a href="{% url 'home' %}" class="text-white"><h3><strong>TITLE</strong></h3></a></li>
 
 
     {% if user.is_authenticated %} 
  
-    <li><a href="{% url 'add_post' %}">Add a Post</a></li>
-    <li><a href="{% url 'add_category' %}">Add a Category</a></li>
-    <li><a href="{% url 'logout' %}">Logout</a></li>
+    <li><a class="text-white" href="{% url 'add_post' %}">Add a Post</a></li>
+    <li><a class="text-white" href="{% url 'add_category' %}">Add a Category</a></li>
+    
    
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -119,11 +58,7 @@
       </div>
     </li>  
 
-      {% else %}
-
-         <li><a href="{% url 'register' %}">Register</a></li>
-
-         <li><a href="{% url 'login' %}">Login</a></li>
+   
 
 
     {% endif %}
@@ -134,7 +69,7 @@
     {% if cat_menu %}
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Categories
+          Filter by Category
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
@@ -154,12 +89,41 @@
 </div>
 
 
+   {% if user.is_authenticated %} 
+    <div class="logout">
+      <a class="badge badge-secondary" href ="{% url 'logout' %}">
+        Logout
+      </a>
+    </div>
 
 
-    <div class="container">
+    {% else %}
+
+      <div class="logout">
+      <a class="badge badge-primary" href ="{% url 'login' %}">
+        Login
+      </a>
+    
+
+      
+      <a class="badge badge-warning" href ="{% url 'register' %}">
+        Register
+      </a>
+    </div>
+    
+
+  {% endif %}
+
+
+
+
+
+
+
       {% block content %}
       {% endblock %}
-    </div>
+ 
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

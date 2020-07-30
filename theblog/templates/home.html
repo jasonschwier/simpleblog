@@ -5,19 +5,18 @@
 
 
 
-</br>
-
 <div class="home">
+<h2><center>Title- A Description of the Title </center></h2><br/>	
 <ul>
 
 {% for post in object_list %}
 	<li>
 		<a href="{% url 'article-detail' post.pk %}">
-			{{ post.title }}- 
-		</a>
+			{{ post.title }} 
+		</a>-
 			
-		<a href="{% url 'category' post.category|slugify %}">
-			in: {{ post.category }}- 
+		in:<a href="{% url 'category' post.category|slugify %}">
+			{{ post.category }}- 
 		</a>	
 		{{ post.author.first_name }} 
 		{{ post.author.last_name }}- 
@@ -39,6 +38,9 @@
 
 	<br/>
 	{{ post.snippet }}
+	<br/>
+	<br/>
+	<br/>
 			
 	</li>
 	{% endfor %}

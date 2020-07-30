@@ -3,17 +3,39 @@
 
 
 
+
+}
+
+
+
+
+.settings {
+  padding-left: 255px;
+  padding-right: 50px;
+
+}
+
+
+.vertical h3 {
+  text-align: center;
+
+
+
 }
 
 .vertical ul {
   list-style-type: none;
   margin: 0;
   padding-left: 0px;
-  width: 17%;
-  background-color: #f1f1f1;
+  width: 16%;
+  background-color: #66D49A ;
   position: fixed;
   height: 100%;
   overflow: auto;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+ 
 }
 
 .vertical li a {
@@ -34,7 +56,10 @@
 }
 
 .home {
-  padding-left: 200px;
+  padding-left: 280px;
+  padding-right: 75px;
+  padding-top: 5px;
+
 }
 
 
@@ -60,4 +85,13 @@
   background-color: #4CAF50;
   color: white;
 }
+
+.logout {
+  text-align: right;
+  padding-right: 10px;
+  padding-top: 10px;
+}
+
+
+ 
 

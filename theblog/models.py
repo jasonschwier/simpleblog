@@ -33,13 +33,13 @@ class Post(models.Model):
 	header_image = models.ImageField(null=True, blank=True, upload_to="images/")
 	title_tag = models.CharField(max_length= 255)
 	author = models.ForeignKey(User, on_delete=models.CASCADE)
-	body = RichTextField(blank=True, null=True)
+	body = RichTextField(blank=True, null=True, max_length=350)
 	#body = models.TextField()
 	
 	post_date = models.DateField(auto_now_add=True)
 	SEO = models.CharField(max_length = 255)
 	category = models.CharField(max_length=255)
-	snippet = models.CharField(max_length=255)
+	snippet = models.CharField(max_length=350)
 	likes = models.ManyToManyField(User, related_name= 'blog_posts')
 
 	def total_likes(self):
