@@ -13,7 +13,7 @@
 
     <link rel="stylesheet" href= "{% static 'theblog/css/main.css' %}"/>
 
-    <title>{% block title %}Title{% endblock %}</title>
+    <title>{% block title %}Unicorn Methods{% endblock %}</title>
   </head>
   <body>
 
@@ -27,8 +27,9 @@
 <div class="vertical"> 
 
   <ul>
-   
-    <li><a href="{% url 'home' %}" class="text-white"><h3><strong>TITLE</strong></h3></a></li>
+    <div class="title">
+      <a href="{% url 'home' %}" class="text-white"><h4><strong>Unicorn Methods</strong></h4></a>
+    </div>
 
 
     {% if user.is_authenticated %} 
@@ -36,7 +37,7 @@
     <li><a class="text-white" href="{% url 'add_post' %}">Add a Post</a></li>
     <li><a class="text-white" href="{% url 'add_category' %}">Add a Category</a></li>
     
-   
+   <!---
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Profile
@@ -56,7 +57,8 @@
           Show Profile Page
         </a>
       </div>
-    </li>  
+    </li> 
+    ---> 
 
    
 
@@ -65,8 +67,9 @@
 
 
 
-
+    <!---
     {% if cat_menu %}
+      <div class="filter">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Filter by Category
@@ -81,8 +84,9 @@
 
           </div>
       </li>
+    </div>
       {% endif %}
-
+      --->
     
 
   </ul>
@@ -96,6 +100,12 @@
       </a>
     </div>
 
+     <div class="Settings">
+      <a class="badge badge-warning" href ="{% url 'logout' %}">
+        Logout
+      </a>
+    </div>
+
 
     {% else %}
 
@@ -103,9 +113,6 @@
       <a class="badge badge-primary" href ="{% url 'login' %}">
         Login
       </a>
-    
-
-      
       <a class="badge badge-warning" href ="{% url 'register' %}">
         Register
       </a>
@@ -119,9 +126,10 @@
 
 
 
-
+    <div class="container">
       {% block content %}
       {% endblock %}
+    </div>
  
 
 

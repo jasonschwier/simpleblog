@@ -6,7 +6,7 @@
 
 
 {% if user.is_authenticated %}
-	</BR><h3 ><CENTER> ADD A POST</CENTER> </h3>
+	<h3 ><CENTER><strong> ADD POST</strong></CENTER> </h3>
 	<div class="form-group">
 		<form method= "POST" enctype="multipart/form-data">
 			{% csrf_token %}
@@ -24,8 +24,9 @@
 		<br/>
 		<br/>
 		<br/>
+
 {% else %}
-ACCESS DENIED
+	ACCESS DENIED
 {% endif %}
 
 </div>

@@ -5,7 +5,7 @@
 {% block content %}
 <div class= "home">
 
-<h1> {{ post.title }} </h1>
+<h3> {{ post.title }} </h3>
 
  By: {{ post.author.first_name }} {{ post.author.last_name }} - {{ post.post_date }}  
 
@@ -15,26 +15,13 @@
         <a href="{% url 'delete_post' post.pk %}" class='badge badge-danger'>Delete</a>
     {% endif %} 
 {% endif %}
+
+
   
 	
-  
+
  
 
-<div class="like-button">
-   <form action = "{% url 'like_post' post.pk %}" method = "POST">
-    {% csrf_token %}
-    {% if user.is_authenticated %}
-        {% if liked %}
-            <button type = "submit", name="post_id", value= "{{ post.id }}" class="btn btn-secondary btn-sm"> Unlike </button>
-        {% else %}
-            <button type = "submit", name="post_id", value= "{{ post.id }}" class="btn btn-primary btn-sm"> Like </button>
-        {% endif %}
-    {% else %}
-        <a href="{% url 'login' %}">Login</a> to like 
-    {% endif %}
-         - {{ total_likes }} Likes
-    </form>
-</div>
 
 
 
@@ -47,19 +34,31 @@
 <br/>
 {{ post.body|safe }}
 
-<br/>
 
-<div class="back-button">
-<a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+
+<div class="like">
+   <form action = "{% url 'like_post' post.pk %}" method = "POST">
+    {% csrf_token %}
+    {% if user.is_authenticated %}
+        {% if liked %}
+      
+            <button type = "submit", name="post_id", value= "{{ post.id }}" class="btn btn-secondary btn-sm"> Unlike </button>
+
+        {% else %}
+            <button type = "submit", name="post_id", value= "{{ post.id }}" class="btn btn-primary btn-sm"> Like </button>
+        {% endif %}
+    {% else %}
+        <a href="{% url 'login' %}">Login</a> to like 
+    {% endif %}
+         - {{ total_likes }} Likes
+    </form>
 </div>
 
-<hr>
-<br/>
-<form action = "{% url 'like_post' post.pk %}" method = "POST">
-	{% csrf_token %}
-</form>
+<br/><hr>
 
-<br/><br/>
+<div class="back">
+    <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+</div>
 
 </div>
 <!---
